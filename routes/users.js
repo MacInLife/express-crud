@@ -4,6 +4,7 @@ var router = express.Router();
 const fs = require("fs");
 let rawdata = fs.readFileSync("./users.json");
 const users = JSON.parse(rawdata);
+
 var router = express();
 
 const Joi = require("@hapi/joi");
