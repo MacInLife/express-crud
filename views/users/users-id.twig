@@ -1,87 +1,91 @@
 {% extends 'layout.twig' %}
 {% block title %}WEBSTART MyApp - ID Utilisateur{% endblock %}
 
-  {% block body %}
-  <header>
-    <nav>
-      <div class="logoWS">
-        <img src="../images/LOGO-école-webstart.png" alt="Logo Webstart">
-      </div>
-      <H1>DEV BACK 3</H1>
-      <p>Clément Barbaza</p>
-    </nav>
-    </nav>
-  </header>
-  <main>
-    <h1>Utilisateurs</h1>
-    <div class="btnEvent">
-      <button onclick="showDialogEdit()">
-        <div class="edit-user"><img src="../images/user-edit-icon.png" alt="Icone d'édition utilisateur"></div>
-      </button>
-      <form method="POST" action="/users/del/{{user.id}}">
-        <button type="submit">
-          <div class="delete-user"><img src="../images/user-delete-icon.png" alt="Icone de suppression utilisateur"></div>
-        </button>
-      </form>
+{% block body %}
+<header>
+  <nav>
+    <div class="logoWS">
+      <img src="../images/LOGO-école-webstart.png" alt="Logo Webstart">
     </div>
-    <div class="tableau">
-      <div class="titre">
-        <H2 class="id">Id.</H2>
-        <H2 class="name">Nom</H2>
-        <H2 class="username">Prénom</H2>
-        <H2 class="mail">E-mail</H2>
-      </div>
-      <div class="content">
-        <div class="pers">
-          <p class="id">{{user.id}}</p>
-          <p class="name">{{user.name}}</p>
-          <p class="username"> {{user.username}} </p>
-          <p class="mail">{{user.email}}</p>
-        </div>
+    <H1>DEV BACK 3</H1>
+    <p>Clément Barbaza</p>
+  </nav>
+  </nav>
+</header>
+<main>
+  <h1>Utilisateurs</h1>
+  <div class="btnEvent">
+    <button onclick="showDialogEdit()">
+      <div class="edit-user"><img src="../images/user-edit-icon.png" alt="Icone d'édition utilisateur"></div>
+    </button>
+    <form method="POST" action="/users/del/{{user.id}}">
+      <button type="submit">
+        <div class="delete-user"><img src="../images/user-delete-icon.png" alt="Icone de suppression utilisateur"></div>
+      </button>
+    </form>
+  </div>
+  <div class="tableau">
+    <div class="titre">
+      <H2 class="id">Id.</H2>
+      <H2 class="name">Nom</H2>
+      <H2 class="username">Prénom</H2>
+      <H2 class="mail">E-mail</H2>
+    </div>
+    <div class="content">
+      <div class="pers">
+        <p class="id">{{user.id}}</p>
+        <p class="name">{{user.name}}</p>
+        <p class="username"> {{user.username}} </p>
+        <p class="mail">{{user.email}}</p>
       </div>
     </div>
-    {# Modifier un utilisateur #}
-    <dialog id="dialogEditUser">
-      <button type="button" class="close" onclick="closeDialogEdit()" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-      <h1>Modifier un Utilisateur</h1>
-      <form action="/users/{{user.id}}" enctype="application/x-www-form-urlencoded" method="POST">
-        <div class="identification">
-          <div class="name">
-            <label for="nom" class="">Nom</label>
-            <input type="text" name="name" id="name" required placeholder="Saisir le nom" value="{{user.name}}">
-          </div>
-          <div class="username">
-            <label for="username" class="">Prénom</label>
-            <input type="text" name="username" id="username" required placeholder="Saisir le prénom" value="{{user.username}}">
-          </div>
-          <div class="mail">
-            <label for="email" class="">E-mail</label>
-            <input type="email" name="email" id="mail" required placeholder="Saisir l'adresse e-mail"
-              value="{{user.email}}">
-          </div>
+  </div>
+  <div class="retour">
+    <a href="../users"><img src="../images/Retour.gif" alt="Flêche retour"></a>
+  </div>
+  {# Modifier un utilisateur #}
+  <dialog id="dialogEditUser">
+    <button type="button" class="close" onclick="closeDialogEdit()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h1>Modifier un Utilisateur</h1>
+    <form action="/users/{{user.id}}" enctype="application/x-www-form-urlencoded" method="POST">
+      <div class="identification">
+        <div class="name">
+          <label for="nom" class="">Nom</label>
+          <input type="text" name="name" id="name" required placeholder="Saisir le nom" value="{{user.name}}">
         </div>
-        <div class="send">
-          <input class="send-btn" type="submit" value="Envoyer">
+        <div class="username">
+          <label for="username" class="">Prénom</label>
+          <input type="text" name="username" id="username" required placeholder="Saisir le prénom"
+            value="{{user.username}}">
         </div>
-      </form>
-    </dialog>
-    <script>
-      var e = document.getElementById("dialogEditUser");
+        <div class="mail">
+          <label for="email" class="">E-mail</label>
+          <input type="email" name="email" id="mail" required placeholder="Saisir l'adresse e-mail"
+            value="{{user.email}}">
+        </div>
+      </div>
+      <div class="send">
+        <input class="send-btn" type="submit" value="Envoyer">
+      </div>
+    </form>
+  </dialog>
+  <script>
+    var e = document.getElementById("dialogEditUser");
 
-      function showDialogEdit() {
-        e.show();
-        console.log(event.type, e, StyleSheet);
-      }
+    function showDialogEdit() {
+      e.show();
+      console.log(event.type, e, StyleSheet);
+    }
 
-      function closeDialogEdit() {
-        e.close();
-        console.log(event.type, e, StyleSheet);
-      }
-    </script>
-  </main>
+    function closeDialogEdit() {
+      e.close();
+      console.log(event.type, e, StyleSheet);
+    }
+  </script>
+</main>
 
 
 
-  {% endblock %}
+{% endblock %}

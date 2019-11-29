@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<meta name="description" content="Une phrase d'au mois 170 caractères...">
-		{% block stylesheets %}
-			<link rel='stylesheet' href='/stylesheets/style.css'/>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="description" content="Une phrase d'au mois 170 caractères...">
+	{% block stylesheets %}
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	{% endblock %}
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Kalam:300, 400, 700|Roboto:100, 100i, 300, 300i, 400, 400i, 500, 500i, 700, 700i, 900, 900i &display=swap');
+	</style>
+
+	<title>
+		{% block title %}WEBSTART MyApp - Utilisateurs
 		{% endblock %}
-		<style>
-			@import url('https://fonts.googleapis.com/css?family=Kalam:300, 400, 700|Roboto:100, 100i, 300, 300i, 400, 400i, 500, 500i, 700, 700i, 900, 900i &display=swap');
-		</style>
+	</title>
+</head>
 
-		<title>
-			{% block title %}WEBSTART MyApp - Utilisateurs
-			{% endblock %}
-		</title>
-	</head>
+<body>
+	{% extends 'layout.twig' %}
+	{% block body %}
+	<header>
+		<nav>
+			<div class="logoWS">
+				<img src="./images/LOGO-école-webstart.png" alt="Logo Webstart">
+			</div>
+			<H1>DEV BACK 3</H1>
+			<p>Clément Barbaza</p>
+		</nav>
+		</nav>
 
-	<body>
-		{% extends 'layout.twig' %}
-		{% block body %}
-			<header>
-				<nav>
-					<div class="logoWS">
-						<img src="./images/LOGO-école-webstart.png" alt="Logo Webstart">
-					</div>
-					<H1>DEV BACK 3</H1>
-					<p>Clément Barbaza</p>
-				</nav>
-			</nav>
-		</body>
-	</html>
-</header>
-<main>
-	<h1>Utilisateurs</h1>
-	<div class="btnEvent">
-		<button onclick="refresh()">
-			<div class="refresh"><img id="fresh" src="./images/refresh.png" alt="Icone d'actualisation"></div>
-		</button>
-		<button onclick="showDialogAdd()">
-			<div class="add-user"><img src="./images/user-add-icon.png" alt="Icone d'ajout utilisateur"></div>
-		</button>
-		<button onclick="showDialogEdit()">
-			<div class="edit-user"><img src="./images/user-edit-icon.png" alt="Icone d'édition utilisateur"></div>
-		</button>
-		<form method="POST" action="/users/{{user.id}}">
-			<button type="submit">
-				<div class="delete-user"><img src="./images/user-delete-icon.png" alt="Icone de suppression utilisateur">
-				</div>
+	</header>
+	<main>
+		<h1>Utilisateurs</h1>
+		<div class="btnEvent">
+			<button onclick="refresh()">
+				<div class="refresh"><img id="fresh" src="./images/refresh.png" alt="Icone d'actualisation"></div>
 			</button>
-		</form>
-	</div>
-	<div class="tableau">
-		<div class="titre">
-			<H2 class="id">Id.</H2>
-			<H2 class="name">Nom</H2>
-			<H2 class="username">Prénom</H2>
-			<H2 class="mail">E-mail</H2>
+			<button onclick="showDialogAdd()">
+				<div class="add-user"><img src="./images/user-add-icon.png" alt="Icone d'ajout utilisateur"></div>
+			</button>
+			<button onclick="showDialogEdit()">
+				<div class="edit-user"><img src="./images/user-edit-icon.png" alt="Icone d'édition utilisateur"></div>
+			</button>
+			<form method="POST" action="/users/{{user.id}}">
+				<button type="submit">
+					<div class="delete-user"><img src="./images/user-delete-icon.png"
+							alt="Icone de suppression utilisateur">
+					</div>
+				</button>
+			</form>
 		</div>
-		<div class="content">
-			{% for user in users %}
+		<div class="tableau">
+			<div class="titre">
+				<H2 class="id">Id.</H2>
+				<H2 class="name">Nom</H2>
+				<H2 class="username">Prénom</H2>
+				<H2 class="mail">E-mail</H2>
+			</div>
+			<div class="content">
+				{% for user in users %}
 				{# {% set users = userAdd.id %} #}
 				<div class="pers">
 					<p class="id">{{user.id}}</p>
@@ -72,14 +72,14 @@
 					<p class="mail">{{user.email}}</p>
 				</div>
 
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
-	</div>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	{# <button onclick="/*showDialog()"*/>Show dialog</button>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		{# <button onclick="/*showDialog()"*/>Show dialog</button>
 				    <button onclick="closeDialog()">Close dialog</button>
 				    <dialog id="myDialog">This is a dialog window</dialog> #}
-	{#   <script>
+		{#   <script>
 				    //   var x = document.getElementById("myDialog");
 				
 				    //   function showDialog() {
@@ -93,115 +93,124 @@
 				    //   }
 				     // </script> #}
 
-	{# Créer un utilisateur #}
+		{# Créer un utilisateur #}
 		<dialog id="dialogAddUser"> <button type="button" class="close" onclick="closeDialogAdd()" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<h1>Ajouter un Utilisateur</h1>
-		<form action="/users/users/index" method="POST">
-			<div class="identification">
-				<div class="name">
-					<label for="nom" class="">Nom</label>
-					<input type="text" name="name" id="name" required placeholder="Saisir le nom" value="{{user.name}}">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h1>Ajouter un Utilisateur</h1>
+			<form action="/users/users/index" method="POST">
+				<div class="identification">
+					<div class="name">
+						<label for="nom" class="">Nom</label>
+						<input type="text" name="name" id="name" required placeholder="Saisir le nom"
+							value="{{user.name}}">
+					</div>
+					<div class="username">
+						<label for="username" class="">Prénom</label>
+						<input type="text" name="username" id="username" required placeholder="Saisir le prénom"
+							value="{{user.username}}">
+					</div>
+					<div class="mail">
+						<label for="email" class="">E-mail</label>
+						<input type="email" name="email" id="mail" required placeholder="Saisir l'adresse e-mail"
+							value="{{user.email}}">
+					</div>
 				</div>
-				<div class="username">
-					<label for="username" class="">Prénom</label>
-					<input type="text" name="username" id="username" required placeholder="Saisir le prénom" value="{{user.username}}">
+				<div class="send">
+					<input class="send-btn" type="submit" value="Envoyer">
 				</div>
-				<div class="mail">
-					<label for="email" class="">E-mail</label>
-					<input type="email" name="email" id="mail" required placeholder="Saisir l'adresse e-mail" value="{{user.email}}">
+			</form>
+		</dialog>
+		<script>
+			function refresh() {
+				location.reload();
+			}
+
+			var a = document.getElementById("dialogAddUser");
+
+			function showDialogAdd() {
+				a.show();
+				console.log(event.type, a, StyleSheet);
+			}
+
+			function closeDialogAdd() {
+				a.close();
+				console.log(event.type, a, StyleSheet);
+			}
+		</script>
+
+
+		{# Modifier un utilisateur #}
+		<dialog id="dialogEditUser">
+			<button type="button" class="close" onclick="closeDialogEdit()" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+			<h1>Modifier un Utilisateur</h1>
+			<form action="/users/{{user.id}}" method="PUT">
+				<div class="identification">
+					<div class="name">
+						<label for="nom" class="">Nom</label>
+						<input type="text" name="name" id="name" required placeholder="Saisir le nom"
+							value="{{user.name}}">
+					</div>
+					<div class="username">
+						<label for="prenom" class="">Prénom</label>
+						<input type="text" name="username" id="username" required placeholder="Saisir le prénom"
+							value="{{user.username}}">
+					</div>
+					<div class="mail">
+						<label for="email" class="">E-mail</label>
+						<input type="email" name="email" id="mail" required placeholder="Saisir l'adresse e-mail"
+							value="{{user.email}}">
+					</div>
 				</div>
-			</div>
-			<div class="send">
-				<input class="send-btn" type="submit" value="Envoyer">
-			</div>
-		</form>
-	</dialog>
-	<script>
-		function refresh() {
-location.reload();
-}
-
-var a = document.getElementById("dialogAddUser");
-
-function showDialogAdd() {
-a.show();
-console.log(event.type, a, StyleSheet);
-}
-
-function closeDialogAdd() {
-a.close();
-console.log(event.type, a, StyleSheet);
-}
-	</script>
-
-
-	{# Modifier un utilisateur #}
-	<dialog id="dialogEditUser">
-		<button type="button" class="close" onclick="closeDialogEdit()" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-		</button>
-		<h1>Modifier un Utilisateur</h1>
-		<form action="/users/{{user.id}}" method="PUT">
-			<div class="identification">
-				<div class="name">
-					<label for="nom" class="">Nom</label>
-					<input type="text" name="name" id="name" required placeholder="Saisir le nom" value="{{user.name}}">
+				<div class="send">
+					<input class="send-btn" type="submit" value="Envoyer">
 				</div>
-				<div class="username">
-					<label for="prenom" class="">Prénom</label>
-					<input type="text" name="username" id="username" required placeholder="Saisir le prénom" value="{{user.username}}">
-				</div>
-				<div class="mail">
-					<label for="email" class="">E-mail</label>
-					<input type="email" name="email" id="mail" required placeholder="Saisir l'adresse e-mail" value="{{user.email}}">
-				</div>
-			</div>
-			<div class="send">
-				<input class="send-btn" type="submit" value="Envoyer">
-			</div>
-		</form>
-	</dialog>
-	<script>
-		var e = document.getElementById("dialogEditUser");
+			</form>
+		</dialog>
+		<script>
+			var e = document.getElementById("dialogEditUser");
 
-function showDialogEdit() {
-e.show();
-console.log(event.type, e, StyleSheet, x.userID);
-}
+			function showDialogEdit() {
+				e.show();
+				console.log(event.type, e, StyleSheet, x.userID);
+			}
 
-function closeDialogEdit() {
-e.close();
-console.log(event.type, e, StyleSheet);
-}
-	</script>
-	<script>
-		$(document).ready(function id() {
-// Lorsque la souris entre dans le div...
-// $(".pers").mouseover(function () {
-//    //...On ajoute une couleur de fond au div
-//    console.log(event.type);
-//    $(this).css("color", "blue");
-//    var recupId =  $(this).children("p").html();
-//    console.log(recupId);
-// });
+			function closeDialogEdit() {
+				e.close();
+				console.log(event.type, e, StyleSheet);
+			}
+		</script>
+		<script>
+			$(document).ready(function id() {
+				// Lorsque la souris entre dans le div...
+				// $(".pers").mouseover(function () {
+				//    //...On ajoute une couleur de fond au div
+				//    console.log(event.type);
+				//    $(this).css("color", "blue");
+				//    var recupId =  $(this).children("p").html();
+				//    console.log(recupId);
+				// });
 
-// Lorsque la souris ressort du div...
-$(".pers").dblclick(function () { // ...On remet un fond blanc
-console.log(event.type);
-$(this).css("color", "red");
-var userID = $(this).children("p").html();
-console.log(userID);
-window.location.replace("./users/" + userID);
+				// Lorsque la souris ressort du div...
+				$(".pers").dblclick(function () { // ...On remet un fond blanc
+					console.log(event.type);
+					$(this).css("color", "red");
+					var userID = $(this).children("p").html();
+					console.log(userID);
+					window.location.replace("./users/" + userID);
 
-});
+				});
 
-// Lorsque la souris ressort du div...
-$(".pers").click(function () { // ...On remet un fond blanc
-console.log(event.type);
-$(this).css("color", "inherit");
-});
-});
-	</script>
-</main>{% endblock %}</body></html>
+				// Lorsque la souris ressort du div...
+				$(".pers").click(function () { // ...On remet un fond blanc
+					console.log(event.type);
+					$(this).css("color", "inherit");
+				});
+			});
+		</script>
+	</main>{% endblock %}
+</body>
+
+</html>
