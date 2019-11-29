@@ -1,0 +1,217 @@
+
+//Reset de Meyer
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  font-size: 100%
+  font: inherit
+  vertical-align: baseline
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+body
+  line-height: 1
+
+ol, ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote:before, blockquote:after, q:before, q:after
+  content: ''
+  content: none
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+html
+  box-sizing: border-box
+
+*, ::after, ::before
+  box-sizing: inherit
+img, video
+  width: 100%
+  vertical-align: middle
+//Fin du reset de Meyer
+
+body
+  //font: 14px "Lucida Grande", Helvetica, Arial, sans-serif
+  font-family: 'Roboto', sans-serif
+  font-size: 16px
+
+a
+  color: #00B7FF
+
+header
+  background: #2b6dda36
+  width: 100%
+  height: 125px
+  position: fixed
+  z-index: 1
+nav > H1, nav > p
+  margin: auto
+nav > H1
+  color: #2351c7
+  font-weight: 700
+nav > p
+  font-style: italic
+  color: #bf0000
+main
+  padding-top: 125px
+nav
+  display: flex
+.logoWS
+  width: 212px
+  margin: 20px auto
+H1
+  font-size: 1.8rem
+  text-align: center
+  margin: 20px auto
+H2
+  font-size: 1.5rem
+  margin: 5px auto 3px
+  background: #2a6dda
+  padding: 10px 10px
+H1, H2
+  font-family: 'Kalam', cursive
+p
+  margin: 3px auto
+  padding: 10px 10px
+.titre
+  display: flex
+  flex-wrap: wrap
+  margin: auto 140px
+  color: white
+.content > .pers
+  display: flex
+  flex-wrap: wrap
+  margin: auto 140px
+.pers:focus
+  color: red
+  background: lightgrey
+.pers:nth-child(odd)
+  background: #4db6ea29
+.titre
+  display: flex
+  flex-wrap: wrap
+
+.id
+  width: 10%
+.name
+  width: 30%
+  border-left: 1px outset white
+.username
+  width: 30%
+  border-left: 1px outset white
+.mail
+  width: 30%
+  border-left: 1px outset white
+button
+  background: no-repeat
+  padding: inherit
+  margin: inherit
+  border: none
+  overflow: hidden
+.btnEvent
+  display: flex
+  flex-wrap: wrap
+  position: absolute
+  left: 68%
+  top: 18%
+.btnEvent > form
+  margin: 0
+.btnEvent > form > button > div
+  width: 50px
+  margin: 10px
+.btnEvent > form > button:hover
+  transform: scale(1.1)
+  transition: all 0.5s ease-in-out
+.btnEvent > form > button:hover > div
+  border: 1px solid black
+  border-radius: 50%
+.btnEvent > button > div
+  width: 50px
+  margin: 10px
+.btnEvent > button:hover
+  transform: scale(1.1)
+  transition: all 0.5s ease-in-out
+.btnEvent > button:hover > div
+  border: 1px solid black
+  border-radius: 50%
+#dialogAddUser:not([open])
+  display: none
+#dialogAddUser[open]
+  display: block
+  background: aliceblue
+  border-radius: 20px
+  border: 1px solid darkblue
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  position: absolute
+  #dialogEditUser:not([open])
+    display: none
+#dialogEditUser[open]
+  display: block
+  background: aliceblue
+  border-radius: 20px
+  border: 1px solid darkblue
+  top: 50%
+  left: 50%
+  transform: translate(-50%,-50%)
+  position: absolute
+.close
+  background: tranparent
+  font-size: 20px
+  padding: 0
+  right: 20px
+  position: absolute
+  & > span
+    color: black
+form
+  margin: auto 140px
+label
+  font-size: 1rem
+  margin: 10px 0
+  background: #2a6dda
+  padding: 10px 10px
+  color: white
+  font-family: 'Kalam', cursive
+  width: 26%
+input
+  margin: 10px 3px
+  padding: 10px 10px
+  color: #2A6DDA
+  font-family: 'Roboto', sans-serif
+  width: 95%
+  &::placeholder
+    font-family: 'Roboto', sans-serif
+    color: #2a6DDa
+    font-size: 12px
+    opacity: 0.5
+.identification
+  display: flex
+  flex-wrap: wrap
+  & > .name
+    width: 50%
+    display: flex
+  & > .username
+    width: 50%
+    display: flex
+  & > .mail
+    width: 100%
+    display: flex
+    & > label
+      width: 89px
+.send
+  text-align: center
+.send-btn
+  color: white
+  background: black
+  font-size: 16px
+  font-family: 'Roboto', sans-serif
+  width: 100px
