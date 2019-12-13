@@ -42,6 +42,8 @@ body
   font-family: 'Roboto', sans-serif
   font-size: 16px
 
+  height: 200vh
+
 a
   color: #00B7FF
 
@@ -51,6 +53,13 @@ header
   height: 125px
   position: fixed
   z-index: 1
+  -webkit-transition: all ease-out .5s
+  -moz-transition: all ease-out .5s
+  -o-transition: all ease-out .5s
+  transition: all ease-out .5s
+.active
+  background-color: blue
+
 nav > H1, nav > p
   margin: auto
 nav > H1

@@ -13,12 +13,13 @@
   </nav>
 </header>
 <main>
-  <h1>Utilisateurs</h1>
+  <h1>Modification d'un utilisateur</h1>
   <div class="btnEvent">
     <button onclick="showDialogEdit()">
       <div class="edit-user"><img src="../images/user-edit-icon.png" alt="Icone d'édition utilisateur"></div>
     </button>
-    <form method="POST" action="/users/del/{{user.id}}">
+    <form method="POST" action="/users/del/{{user.id}}?_method=DELETE"
+      onsubmit="return confirm('Êtes vous sûre de vouloir supprimer cet utilisateur ?');">
       <button type="submit">
         <div class="delete-user"><img src="../images/user-delete-icon.png" alt="Icone de suppression utilisateur"></div>
       </button>
@@ -49,7 +50,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <h1>Modifier un Utilisateur</h1>
-    <form action="/users/{{user.id}}" enctype="application/x-www-form-urlencoded" method="POST">
+    <form action="/users/{{user.id}}?_method=PUT" enctype="application/x-www-form-urlencoded" method="POST">
       <div class="identification">
         <div class="name">
           <label for="nom" class="">Nom</label>
